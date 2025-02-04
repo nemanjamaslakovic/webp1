@@ -46,6 +46,7 @@ $(document).ready(()=>{
 
         $(form).append(osiguranik);
         $("#formaOsiguranik").append(form);
+        $("#osiguranikWrapper").addClass("slide-in-left");
     }
 
     function showData(){
@@ -67,16 +68,26 @@ $(document).ready(()=>{
         }
     }
 
-    function validateName(name) {
+    function validateName(input) {
         let regex = /^[A-ZČĆŽŠĐ][a-zčćžšđ]+(\s[A-ZČĆŽŠĐ][a-zčćžšđ]+)+$/;
-        return regex.test(name);
+        let name = $(input).val();
+        let isValid = regex.test(name);
+        setBorder(input, isValid);
+        return isValid;
     }
     
-    function validateJMBG(jmbg) {
+    function validateJMBG(input) {
         let regex = /^\d{13}$/;
-        return regex.test(jmbg);
+        let jmbg = $(input).val();
+        let isValid = regex.test(jmbg);
+        setBorder(input, isValid);
+        return isValid;
     }
     
+    function setBorder(element, isValid){
+        $(element).css("border", isValid ? "2px solid green" : "2px solid red");
+    }
+
     $("#kolikoOsiguranika").change(()=>{
         brojOsiguranika = parseInt($("#kolikoOsiguranika").val());
 
@@ -85,6 +96,7 @@ $(document).ready(()=>{
         $(form).empty;
         $("#formaOsiguranik").empty().show();
         $("#backForward").empty().show();
+        $("#osiguranikWrapper").removeClass("slide-out-right");
 
         if(brojOsiguranika > 0){
             $("#kolikoOsiguranika").hide();
@@ -94,19 +106,22 @@ $(document).ready(()=>{
                 createOsiguranikForm(i);
             }
 
-            let back = document.createElement("p");
-            $(back).text("Nazad");
+            let back = document.createElement("div");
+            $(back).html("&larr;").addClass("backForwardButton");
 
-            let forward = document.createElement("p");
-            $(forward).text("Sledece");
+            let forward = document.createElement("div");
+            $(forward).html("&rarr;").addClass("backForwardButton");
 
             $(back).off("click").click(()=>{
                 if(backCounter == 0){
+                    $("#osiguranikWrapper").removeClass("slide-in-left");
+                    console.log($("#osiguranikWrapper"));
                     $("#kolikoOsiguranika").val("0").show();
                     $(form).empty();
                     $("#formaOsiguranik").empty();
                     $("#backForward").hide();
                 }else{
+                    $("#formaOsiguranik").removeClass("slide-out-left");
                     $("#formaOsiguranik").show();
                     $("#dataCheck").empty();
                     $(forward).show();
@@ -115,35 +130,37 @@ $(document).ready(()=>{
             });
 
             $(forward).click(() => {
+                
                 let allValid = true;
-            
+
                 $(".nameSurname").each(function () {
-                    if (!validateName($(this).val())) {
-                        $(this).css("border", "2px solid red");
-                        allValid = false;
-                    } else {
-                        $(this).css("border", "2px solid green"); 
-                    }
+                    if(!validateName(this)) allValid = false;
                 });
             
                 $(".jmbg").each(function () {
-                    if (!validateJMBG($(this).val())) {
-                        $(this).css("border", "2px solid red"); 
-                        allValid = false;
-                    } else {
-                        $(this).css("border", "2px solid green"); 
-                    }
+                    if(!validateJMBG(this)) allValid = false;
                 });
             
                 if (allValid) {
                     backCounter++;
                     $(forward).hide();
-                    $("#formaOsiguranik").hide();
-                    showData();
+                    $("#formaOsiguranik").addClass("slide-out-left");
+                    setTimeout(() => {
+                        $("#formaOsiguranik").hide();
+                        showData();
+                    }, 500);  
                 }
             });
 
             $("#backForward").append(back, forward);
         }
-    })
+    });
+
+    $(document).on("blur", ".nameSurname", function(){
+        validateName(this);
+    });
+
+    $(document).on("blur", ".jmbg", function(){
+        validateJMBG(this);
+    });
 })
