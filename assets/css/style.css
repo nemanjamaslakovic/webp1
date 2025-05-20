@@ -1,12 +1,56 @@
 *{
     margin: 0;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body{
+    background-image: url("../img/vecteezy_blue-and-white-color-background-with-lines-or-abstract_49662626.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.menu{
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 1000;
+    font-size: 20px;
+}
+
+#slider{
+    margin-top: 200px;
+}
+
+#ponude{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+}
+
+.hPonuda{
+    width: 25%;
+    padding: 10px;
+    text-align: center;
+}
+
+.hPonudaImage img{
+    width: 100%;
+
 }
 
 #osiguranjeWrapper{
     height: 100vh;
-    background-image: url("../img/vecteezy_blue-and-white-color-background-with-lines-or-abstract_49662626.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,7 +71,7 @@
 #backForward{
     display: flex;
     justify-content: space-between;
-    width: 20%;
+    width: 33%;
 }
 
 .backForwardButton{
@@ -46,64 +90,4 @@
 
 .backForwardButton:hover{
     transform: scale(1.1);
-}
-
-.slide-out-left {
-    animation: slideOutLeft 0.5s ease-out forwards;
-}
-
-@keyframes slideOutLeft {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
-
-.slide-out {
-    animation: slideOutLeft 0.5s ease-out forwards;
-}
-
-@keyframes slideOutLeft {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-}
-
-.slide-in-left {
-    animation: slideInLeft 0.5s ease-out forwards;
-}
-
-@keyframes slideInLeft {
-    0% {
-        transform: translateX(10%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.slide-out-right {
-    animation: slideOutRight 0.5s ease-out forwards;
-}
-
-@keyframes slideOutRight {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
 }
