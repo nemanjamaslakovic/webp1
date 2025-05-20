@@ -1,14 +1,27 @@
-*{
-    margin: 0;
-    list-style-type: none;
-    text-decoration: none;
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Lato, sans-serif;
+  color: #000;
+  list-style-type: none;
+  text-decoration: none;
 }
 
-body{
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato:200,300,400,400i,700");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:200,400,400i,700");
+
+/* body{
     background-image: url("../img/vecteezy_blue-and-white-color-background-with-lines-or-abstract_49662626.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+} */
+
+body{
+    height: 6000px;
 }
 
 .container{
@@ -29,25 +42,132 @@ body{
 }
 
 #slider{
-    margin-top: 200px;
+    width: 100%;
+    height: 700px;
+}
+
+
+.sliderWrapper {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    height: auto;
+}
+
+.sliderWrapper img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    display: block;
+}
+
+.sliderShadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38,70,152, 0.4);
+    z-index: 1;
+}
+
+.headingHPage{
+    margin: 0 auto;
+    width:30%;
+    text-align: center;
+    padding: 100px;
+}
+
+.headingHPage h1{
+    color: #2251a1;
 }
 
 #ponude{
+    background-color: #ccecf9;
+    padding: 100px;
+    text-align: center;
+
+}
+
+.ponudeSection{
     display: flex;
-    justify-content: space-between;
-    margin-top: 200px;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
 }
 
 .hPonuda{
     width: 25%;
-    padding: 10px;
-    text-align: center;
+    background-color: #fff;
+    padding-bottom: 20px;
+    border-radius: 5px;
 }
 
 .hPonudaImage img{
     width: 100%;
-
+    border-radius: 5px 5px 0px 0px;
+    margin-bottom: 10px;
 }
+
+.hPonuda p{
+    margin: 10px;
+}
+
+.seeMore{
+    padding:10px;
+    color: #fff;
+    background-color: #1a7fc3;
+    width: 100px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.seeMore:hover{
+    background-color: #2251a1;
+}
+
+.aboutUsHome {
+  position: relative;   
+  width: 100%;
+  height: 900px;
+  overflow: hidden;  
+}
+
+.aboutUsBackgroundHome {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;  
+    background-image: url('/assets/img/background-index-office.jpg');
+    background-size: cover;     
+    background-position: center; 
+    background-attachment: fixed;
+    z-index: 0;   
+}
+
+.shadow {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0; 
+  background-color: rgba(38, 70, 152, 0.7);
+  z-index: 1;
+}
+
+fieldset{
+    width: 30%;
+    margin-left: 10%;
+    margin-top: 10%;
+    border: 2px solid #fff;
+    padding:3%;
+    background-color: rgba(6, 22, 62, 0.7);
+}
+
+fieldset p, fieldset h2{
+    color: white;
+}
+
+legend, legend img{
+    width: 100px;
+}
+
+
+/*Osiguranje page style*/
 
 #osiguranjeWrapper{
     height: 100vh;

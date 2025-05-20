@@ -3,13 +3,14 @@ $(document).ready(()=>{
     // Nav
 
     let stranice = ["Pocetna", "Osiguranje", "O nama", "Kontakt"];
+    let straniceUrl = ["/index.html", "/assets/pages/osiguranje.html", "#", "#"];
 
     let navigacija = document.querySelector("#header");
 
     let navIspis = `<nav><ul class="menu">`;
 
     for(let stranica in stranice){
-        navIspis += `<a href="#"><li>
+        navIspis += `<a href="${straniceUrl[stranica]}"><li>
         ${stranice[stranica]}
         </li></a>`;
     }
@@ -23,7 +24,7 @@ $(document).ready(()=>{
     // Home page
 
     if(window.location.href.includes("/index")){
-        let ponude = document.getElementById("ponude");
+        let ponude = $("#ponude .container .ponudeSection");
 
         let ponudeSlika = ["assets/img/pari-picture.jpg", "assets/img/asia-picture.jpg", "assets/img/machu-pichu-picture.jpg"];
         let ponudeNaslov = ["Evropa", "Azija", "Ostatak sveta"];
@@ -39,12 +40,11 @@ $(document).ready(()=>{
                     </div>
                     <h2>${ponudeNaslov[i]}</h2>
                     <p>${ponudeOpis[i]}</p>
-                    <button>Pogledaj jos</button>
+                    <div class="seeMore">Vise ></div>
                 </div>
             `;
         }
-
-        ponude.innerHTML = ponudeIspis;
+        ponude.html(ponudeIspis);
 
         // Slider
 
@@ -60,7 +60,7 @@ $(document).ready(()=>{
                 src: nizSliderSlika[sliderCounter],
                 alt: nizSliderAlt[sliderCounter]
             })
-        }, 3000);
+        }, 6000);
 
     }
 
